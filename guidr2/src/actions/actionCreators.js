@@ -1,12 +1,13 @@
 import * as types from './actionTypes';
 import axios from 'axios';
 
-// maybe URLS in variables later
+// if beef with CORS then swap string back in
+const adventureURL = 'https://guidr2.herokuapp.com/adventures'
 
 
 export const getAdventuresAsync = () => dispatch => {
     dispatch(spinnerOn());
-    axios.get('https://guidr2.herokuapp.com/adventures')
+    axios.get(adventureURL)
         .then(res => {
             dispatch({ type: types.GET_ADVENTURES, payload: res.data });
             dispatch(spinnerOff());
@@ -15,7 +16,7 @@ export const getAdventuresAsync = () => dispatch => {
 
 export const addAdventureAsync = adventure => dispatch => {
     dispatch(spinnerOn());
-    axios.post(`https://guidr2.herokuapp.com/adventures`, adventure)
+    axios.post(adventureURL, adventure)
         .then(res => {
             // console.log(adventure);
             // console.log(res.data);
@@ -26,16 +27,16 @@ export const addAdventureAsync = adventure => dispatch => {
 
 export const deleteAdventureAsync = id => dispatch => {
     dispatch(spinnerOn());
-    axios.delete(`https://guidr2.herokuapp.com/adventures/${id}`)
+    axios.delete(`${adventureURL}/${id}`)
         .then(res => {
             dispatch({ type: types.DELETE_ADVENTURE, payload: id });
             dispatch(spinnerOff());
         });
 };
 
-export const updateAdventureAsync = updatedAdventure => dispatch => {
+export const updateAdventureAsync = (id, updatedAdventure) => dispatch => {
     dispatch(spinnerOn());
-    axios.put(`https://guidr2.herokuapp.com/adventures/${updatedAdventure.id}`, updatedAdventure.updatedInfo)
+    axios.put(`${adventureURL}/${id}`, updatedAdventure)
         .then(res => {
             dispatch({ type: types.UPDATE_ADVENTURE, payload: res.data });
             dispatch(spinnerOff());

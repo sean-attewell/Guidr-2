@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App'; // check path
+import App from './components/App';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
-import { adventuresReducer, spinner } from './reducers/index'; // check imports and path
+import { adventuresReducer, spinner } from './reducers/reducers';
 
 const rootReducer = combineReducers({
     adventuresReducer,
