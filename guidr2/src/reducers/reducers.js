@@ -5,7 +5,8 @@ export function adventuresReducer(adventuresArray = [], action) {
         case types.GET_ADVENTURES: // if action type is this
             return action.payload; // replace state with array of all objects
         case types.ADD_ADVENTURE:
-            return [...adventuresArray, ...action.payload];
+            // return adventuresArray.concat(action.payload); this works
+            return adventuresArray;
         case types.DELETE_ADVENTURE:
             return adventuresArray; // server deletes in background...
         case types.UPDATE_ADVENTURE:

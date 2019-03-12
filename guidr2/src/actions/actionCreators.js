@@ -14,15 +14,17 @@ export const getAdventuresAsync = () => dispatch => {
         });
 };
 
-export const addAdventureAsync = adventure => dispatch => {
+export const addAdventureAsync = newAdventure => dispatch => {
     dispatch(spinnerOn());
-    axios.post(adventureURL, adventure)
+    axios.post(adventureURL, newAdventure)
         .then(res => {
             // console.log(adventure);
             // console.log(res.data);
             dispatch({ type: types.ADD_ADVENTURE, payload: res.data });
             dispatch(spinnerOff());
         });
+    // dispatch(getAdventuresAsync());
+    
 };
 
 export const deleteAdventureAsync = id => dispatch => {
@@ -45,13 +47,13 @@ export const updateAdventureAsync = (id, updatedAdventure) => dispatch => {
 
 export function spinnerOn() {
     return {
-        type: SPINNER_ON,
+        type: types.SPINNER_ON,
     };
 }
 
 export function spinnerOff() {
     return {
-        type: SPINNER_OFF,
+        type: types.SPINNER_OFF,
     };
 }
 
