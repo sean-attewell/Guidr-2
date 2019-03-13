@@ -1,53 +1,44 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { updateAdventureAsync } from '../actions/actionCreators';
+import { updateAdventureAsync, clearAdventureForEdit } from '../actions/actionCreators';
 
 
 export class AdventureEditForm extends React.Component {
-    adventure_idRef = React.createRef();
-    adventure_typeRef = React.createRef();
-    titleRef = React.createRef();
-    locationRef = React.createRef();
-    durationRef = React.createRef();
-    descriptionRef = React.createRef();
-    professionalRef = React.createRef();
-    dateRef = React.createRef();
+    state={
+        adventure_ID: this.props.adventureBeingEdited.id,
+        adventure_type: this.props.adventureBeingEdited.adventure_type,
+        title: this.props.adventureBeingEdited.title,
+        location: this.props.adventureBeingEdited.location,
+        duration: this.props.adventureBeingEdited.duration,
+        description: this.props.adventureBeingEdited.description,
+        professional: this.props.adventureBeingEdited.professional,
+        date: this.props.adventureBeingEdited.date
+    }
 
-    onAddAdventure = () => {
-        const adventure_idInput = this.adventure_idRef.current;
-        const adventure_typeInput = this.adventure_typeRef.current;
-        const titleInput = this.titleRef.current;
-        const locationInput = this.locationRef.current;
-        const durationInput = this.durationRef.current;
-        const descriptionInput = this.descriptionRef.current;
-        const professionalInput = this.professionalRef.current;
-        const dateInput = this.dateRef.current;
-
+    onUpdateAdventure = () => {
 
         const EditedAdventure = {
-            adventure_type: adventure_typeInput.value,
-            title: titleInput.value,
-            location: locationInput.value,
-            duration: durationInput.value,
-            description: descriptionInput.value,
-            professional: professionalInput.value,
-            date: dateInput.value,
+            adventure_type: this.state.adventure_type,
+            title: this.state.title,
+            location: this.state.location,
+            duration: this.state.duration,
+            description: this.state.description,
+            professional: this.state.professional,
+            date: this.state.date,
         };
 
-        const AdventureId = adventure_idInput.value
+        const AdventureId = this.state.adventure_ID
 
         this.props.updateAdventureAsync(AdventureId, EditedAdventure);
 
-        adventure_idInput.value = '';
-        adventure_typeInput.value = '';
-        titleInput.value = '';
-        locationInput.value = '';
-        durationInput.value = '';
-        descriptionInput.value = '';
-        professionalInput.value = '';
-        dateInput.value = '';
+        this.props.clearAdventureForEdit();
     }
+
+    handleInputChange = e => {
+        this.setState({ [e.target.name]: e.target.value });
+    };
+    
 
     render() {
         return (
@@ -56,39 +47,87 @@ export class AdventureEditForm extends React.Component {
                     <h2>Edit an Existing adventure!</h2>
                 </div>
                 <div>
-                    <em>Adventure ID: </em>
-                    <input ref={this.adventure_idRef} type="text" />
+                    <em>Adventure ID: {this.state.adventure_ID} </em>
                 </div>
                 <div>
                     <em>Adventure Type: </em>
-                    <input ref={this.adventure_typeRef} type="text" />
+                    <input 
+                        value={this.state.adventure_type} 
+                        type="text" 
+                        className="inputClass"
+                        onChange={this.handleInputChange}
+                        placeholder="Adventure Type"
+                        name="adventure_type"
+                    />
                 </div>
                 <div>
                     <em>Title: </em>
-                    <input ref={this.titleRef} type="text" />
+                    <input 
+                        value={this.state.title} 
+                        type="text" 
+                        className="inputClass"
+                        onChange={this.handleInputChange}
+                        placeholder="Title"
+                        name="title"
+                    />
                 </div>
                 <div>
                     <em>Location: </em>
-                    <input ref={this.locationRef} type="text" />
+                    <input 
+                        value={this.state.location} 
+                        type="text"
+                        className="inputClass"
+                        onChange={this.handleInputChange}
+                        placeholder="Location"
+                        name="location"
+                    />
                 </div>
                 <div>
                     <em>Duration: </em>
-                    <input ref={this.durationRef} type="text" />
+                    <input 
+                        value={this.state.duration} 
+                        type="text"
+                        className="inputClass"
+                        onChange={this.handleInputChange}
+                        placeholder="Duration" 
+                        name="duration"
+                    />
                 </div>
                 <div>
                     <em>Description: </em>
-                    <input ref={this.descriptionRef} type="text" />
+                    <input 
+                        value={this.state.description} 
+                        type="text" 
+                        className="inputClass"
+                        onChange={this.handleInputChange}
+                        placeholder="Description"
+                        name="description"
+                    />
                 </div>
                 <div>
                     <em>Professional? </em>
-                    <input ref={this.professionalRef} type="text" />
+                    <input 
+                        value={this.state.professional} 
+                        type="text" 
+                        className="inputClass"
+                        onChange={this.handleInputChange}
+                        placeholder="Professional?"
+                        name="professional"
+                    />
                 </div>
                 <div>
                     <em>Date: </em>
-                    <input ref={this.dateRef} type="text" />
+                    <input 
+                        value={this.state.date} 
+                        type="text" 
+                        className="inputClass"
+                        onChange={this.handleInputChange}
+                        placeholder="Date"
+                        name="date"
+                    />
                 </div>
                 <div>
-                    <button onClick={this.onAddAdventure}>Add Adventure</button>
+                    <button onClick={this.onUpdateAdventure}>Update Adventure</button>
                 </div>
             </div>
         );
@@ -99,7 +138,16 @@ export class AdventureEditForm extends React.Component {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         updateAdventureAsync,
+        clearAdventureForEdit,
     }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(AdventureEditForm);
+function mapStateToProps(state) {
+    return {
+        // adventures: state.adventuresReducer,
+        // adventureBeingEditedId: state.adventureBeingEditedReducer,
+        adventureBeingEdited: state.adventuresReducer.find((adventure) => adventure.id === state.adventureBeingEditedReducer)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdventureEditForm);

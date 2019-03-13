@@ -6,11 +6,12 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
-import { adventuresReducer, spinner } from './reducers/reducers';
+import { adventuresReducer, spinner, adventureBeingEditedReducer } from './reducers/reducers';
 
 const rootReducer = combineReducers({
     adventuresReducer,
-    spinner
+    spinner,
+    adventureBeingEditedReducer
 });
 
 

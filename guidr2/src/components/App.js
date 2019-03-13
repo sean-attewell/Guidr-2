@@ -20,7 +20,8 @@ class App extends Component {
       <div className="listAndForm">
         <Adventures />
         <AdventureForm />
-        <AdventureEditForm />
+        {this.props.adventureBeingEditedId && <AdventureEditForm />
+        }
       </div>
     );
   }
@@ -28,8 +29,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    // adventures: state.adventuresReducer, don't think this is used here
-    spinner: state.spinner
+    spinner: state.spinner,
+    adventureBeingEditedId: state.adventureBeingEditedReducer
   };
 }
 

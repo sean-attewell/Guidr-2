@@ -17,7 +17,10 @@ export default class Adventure extends React.Component {
                 <div>{adventure.description}</div>
                 <div>{adventure.professional}</div>
                 <div>{adventure.date}</div>
+                <button onClick={() => this.props.deleteAdventureAsync(adventure.id)}>Delete</button>
+                <button onClick={() => this.props.setAdventureForEdit(adventure.id)}>Edit</button>
             </div>
+            
         );
     }
 }
