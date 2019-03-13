@@ -5,12 +5,11 @@ export function adventuresReducer(adventuresArray = [], action) {
         case types.GET_ADVENTURES: // if action type is this
             return action.payload; // replace state with array of all objects
         case types.ADD_ADVENTURE:
-            // return adventuresArray.concat(action.payload); this works
-            return adventuresArray;
+            return adventuresArray; //server adds in background...
         case types.DELETE_ADVENTURE:
             return adventuresArray; // server deletes in background...
         case types.UPDATE_ADVENTURE:
-            return adventuresArray // server deletes in background...
+            return adventuresArray // server updates in background...
         default:
             return adventuresArray;
     }

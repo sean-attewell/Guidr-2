@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getAdventuresAsync } from '../actions/actionCreators'
+import { getAdventuresAsync, deleteAdventureAsync } from '../actions/actionCreators'
 import Adventure from './Adventure';
 
 export class Adventures extends React.Component {
@@ -16,10 +16,13 @@ export class Adventures extends React.Component {
                 <div>
                     {
                         this.props.adventures.map(adventure => (
-                            <Adventure
-                                key={adventure.id}
-                                adventure={adventure}
-                            />
+                            <div key={adventure.id}>
+                                <Adventure
+                                    key={adventure.id}
+                                    adventure={adventure}
+                                />
+                                <button onClick={() => this.props.deleteAdventureAsync(adventure.id)}>Delete</button>
+                            </div>
                         ))
                     }
                 </div>
@@ -38,6 +41,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         getAdventuresAsync,
+        deleteAdventureAsync,
     }, dispatch);
 }
 

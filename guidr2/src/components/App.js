@@ -4,7 +4,7 @@ import './App.css';
 // import Spinner from './Spinner'
 import Adventures from './Adventures'
 import AdventureForm from './AdventureForm'
-
+import AdventureEditForm from './AdventureEditForm'
 
 class App extends Component {
 
@@ -20,6 +20,7 @@ class App extends Component {
       <div className="listAndForm">
         <Adventures />
         <AdventureForm />
+        <AdventureEditForm />
       </div>
     );
   }
