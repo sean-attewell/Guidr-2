@@ -23,10 +23,13 @@ export const addAdventureAsync = newAdventure => dispatch => {
             dispatch({ type: types.ADD_ADVENTURE, payload: res.data });
             dispatch(spinnerOff());
         });
-    // dispatch(getAdventuresAsync());
-    
+        
 };
+    
+    // dispatch(getAdventuresAsync());
 
+
+    
 export const deleteAdventureAsync = id => dispatch => {
     dispatch(spinnerOn());
     axios.delete(`${adventureURL}/${id}`)
