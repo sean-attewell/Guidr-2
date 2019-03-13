@@ -1,0 +1,9 @@
+export const GET_ADVENTURES = 'GET_ADVENTURES';
+export const ADD_ADVENTURE = 'ADD_ADVENTURE';
+export const DELETE_ADVENTURE = 'DELETE_ADVENTURE';
+export const UPDATE_ADVENTURE = 'UPDATE_ADVENTURE';
+
+export const SPINNER_ON = 'SPINNER_ON';
+export const SPINNER_OFF = 'SPINNER_OFF';
+
+export const THROW_ERROR = 'THROW_ERROR';
