@@ -32,7 +32,7 @@ export class AdventureForm extends React.Component {
             location: locationInput.value,
             duration: durationInput.value,
             description: descriptionInput.value,
-            professional: professionalInput.value,
+            professional: professionalInput.checked,
             date: dateInput.value,
         };
 
@@ -44,7 +44,7 @@ export class AdventureForm extends React.Component {
         locationInput.value = '';
         durationInput.value = '';
         descriptionInput.value = '';
-        professionalInput.value = '';
+        // professionalInput.value = '';
         dateInput.value = '';
     }
 
@@ -80,7 +80,7 @@ export class AdventureForm extends React.Component {
                 </div>
                 <div>
                     <em>Professional? </em>
-                    <input ref={this.professionalRef} type="text" />
+                    <input ref={this.professionalRef} type="checkbox" />
                 </div>
                 <div>
                     <em>Date: </em>

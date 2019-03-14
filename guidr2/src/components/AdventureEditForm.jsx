@@ -39,6 +39,9 @@ export class AdventureEditForm extends React.Component {
         this.setState({ [e.target.name]: e.target.value });
     };
     
+    handleCheckboxChange = e => {
+        this.setState({ [e.target.name]: e.target.checked });
+    };
 
     render() {
         return (
@@ -47,7 +50,7 @@ export class AdventureEditForm extends React.Component {
                     <h2>Edit an Existing adventure!</h2>
                 </div>
                 <div>
-                    <em>Adventure ID: {this.state.adventure_ID} </em>
+                    <em>Adventure Number: {this.state.adventure_ID} </em>
                 </div>
                 <div>
                     <em>Adventure Type: </em>
@@ -107,10 +110,10 @@ export class AdventureEditForm extends React.Component {
                 <div>
                     <em>Professional? </em>
                     <input 
-                        value={this.state.professional} 
-                        type="text" 
+                        checked={this.state.professional} 
+                        type="checkbox" 
                         className="inputClass"
-                        onChange={this.handleInputChange}
+                        onChange={this.handleCheckboxChange}
                         placeholder="Professional?"
                         name="professional"
                     />
