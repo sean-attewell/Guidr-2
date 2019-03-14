@@ -1,0 +1,59 @@
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.editContainer {
+    z-index: 2;
+    height: 600px;
+    width: 75vw;
+    border-radius: 10px;
+    position: fixed;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border: 2px solid black;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    background-image: url(../images/notebook-light.jpg);
+    background-size: cover;
+    /* background-attachment: fixed; */
+    padding: 2% 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.editContainer h2 {
+    margin: 0;
+}
+
+/* .inputClass {
+    height: 50px;
+} */
+
+.descriptionClass {
+    height: 150px;
+}
+
+.editContainer div {
+    display: flex;
+    flex-direction: column;
+}
+
+.updateButton {
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-style: italic;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1.5%;
+    background-color: #F8F0EE;
+}
+
+.updateButton:hover {
+    background-color: white;
+    cursor: pointer;
+}

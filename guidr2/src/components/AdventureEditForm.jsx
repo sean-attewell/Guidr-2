@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { updateAdventureAsync, clearAdventureForEdit } from '../actions/actionCreators';
-
+import '../css/AdventureEditForm.css';
 
 export class AdventureEditForm extends React.Component {
     state={
@@ -45,12 +45,9 @@ export class AdventureEditForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="editContainer">
                 <div>
-                    <h2>Edit an Existing adventure!</h2>
-                </div>
-                <div>
-                    <em>Adventure Number: {this.state.adventure_ID} </em>
+                    <h2>Editing adventure {this.state.adventure_ID}...</h2>
                 </div>
                 <div>
                     <em>Adventure Type: </em>
@@ -98,10 +95,9 @@ export class AdventureEditForm extends React.Component {
                 </div>
                 <div>
                     <em>Description: </em>
-                    <input 
+                    <textarea 
                         value={this.state.description} 
-                        type="text" 
-                        className="inputClass"
+                        className="descriptionClass"
                         onChange={this.handleInputChange}
                         placeholder="Description"
                         name="description"
@@ -130,7 +126,7 @@ export class AdventureEditForm extends React.Component {
                     />
                 </div>
                 <div>
-                    <button onClick={this.onUpdateAdventure}>Update Adventure</button>
+                    <button onClick={this.onUpdateAdventure} className="updateButton">Update Adventure</button>
                 </div>
             </div>
         );

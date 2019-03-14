@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './css/Index.css';
 import App from './components/App';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
