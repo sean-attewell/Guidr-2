@@ -4,6 +4,7 @@
 }
 
 .editContainer {
+    color: white;
     z-index: 2;
     height: 600px;
     width: 75vw;
@@ -14,10 +15,10 @@
     left: 0;
     bottom: 0;
     right: 0;
-    border: 2px solid black;
+    border: 3px solid white;
     animation-name: fadeIn;
     animation-duration: 1s;
-    background-image: url(../images/notebook-light.jpg);
+    background-image: url(../images/secretPath.jpg);
     background-size: cover;
     /* background-attachment: fixed; */
     padding: 2% 4%;

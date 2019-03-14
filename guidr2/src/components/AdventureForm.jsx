@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { addAdventureAsync } from '../actions/actionCreators';
-
+import '../css/AdventureForm.css'
 
 export class AdventureForm extends React.Component {
     user_idRef = React.createRef();
@@ -87,7 +87,7 @@ export class AdventureForm extends React.Component {
                     <input ref={this.dateRef} type="text" />
                 </div>
                 <div>
-                    <button onClick={this.onAddAdventure}>Add Adventure</button>
+                    <button className="addButton" onClick={this.onAddAdventure}>Add Adventure</button>
                 </div>
             </div>
         );

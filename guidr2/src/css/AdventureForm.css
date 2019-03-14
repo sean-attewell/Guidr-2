@@ -1,0 +1,18 @@
+.addButton {
+    font-size: 1.0rem;
+    font-weight: bold;
+    font-style: italic;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1.5%;
+    background-color: #F8F0EE;
+    padding: 1% 1.5%;
+    margin-right: 1%;
+    /* width: 200px; */
+}
+
+.addButton:hover {
+    background-color: white;
+    cursor: pointer;
+}

@@ -19,12 +19,11 @@ class App extends Component {
     //   )
     // }
 
-
     return (
-      <div className="listAndForm">
-        <div style={this.props.adventureBeingEditedId ? {pointerEvents:"none"} : {pointerEvents:"auto"}}>
-          <Adventures />
-          <AdventureForm />
+      <div className="listAndForms">
+        <div style={this.props.adventureBeingEditedId ? {pointerEvents:"none", filter:"blur(3px)"} : {}}>
+            <Adventures />
+            <AdventureForm />
         </div>
         {this.props.adventureBeingEditedId && <AdventureEditForm />}
       </div>

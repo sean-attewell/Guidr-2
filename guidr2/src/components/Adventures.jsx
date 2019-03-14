@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getAdventuresAsync, deleteAdventureAsync, setAdventureForEdit } from '../actions/actionCreators'
 import Adventure from './Adventure';
+import '../css/Adventures.css'
 
 export class Adventures extends React.Component {
     componentDidMount() {
@@ -12,8 +13,9 @@ export class Adventures extends React.Component {
     render() {
         return (
             <div>
-                <h3>List of all adventures:</h3>
-                <div>
+                <img className="guidr-logo" src={require('../images/guidr-no-back.png')} alt="guidr-logo"></img>
+                <h1>Local adventure listings...</h1>
+                <div className="adventuresContainer">
                     {
                         this.props.adventures.map(adventure => (
                             <div key={adventure.id}>
