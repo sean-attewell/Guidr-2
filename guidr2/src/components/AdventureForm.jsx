@@ -50,41 +50,41 @@ export class AdventureForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="adventureFormContainer">
                 <div>
-                    <h2>Add new adventure!</h2>
+                    <h2 className="addHeader">Add new adventure!</h2>
                 </div>
                 <div>
-                    <em>User ID: </em>
-                    <input ref={this.user_idRef} type="text" />
+                    <div>User ID: </div>
+                    <input className="addInputClass" ref={this.user_idRef} type="text" />
                 </div>
                 <div>
-                    <em>Adventure Type: </em>
-                    <input ref={this.adventure_typeRef} type="text" />
+                    <div>Adventure Type: </div>
+                    <input className="addInputClass" ref={this.adventure_typeRef} type="text" />
                 </div>
                 <div>
-                    <em>Title: </em>
-                    <input ref={this.titleRef} type="text" />
+                    <div>Title: </div>
+                    <input className="addInputClass" ref={this.titleRef} type="text" />
                 </div>
                 <div>
-                    <em>Location: </em>
-                    <input ref={this.locationRef} type="text" />
+                    <div>Location: </div>
+                    <input className="addInputClass" ref={this.locationRef} type="text" />
                 </div>
                 <div>
-                    <em>Duration: </em>
-                    <input ref={this.durationRef} type="text" />
+                    <div>Duration: </div>
+                    <input className="addInputClass" ref={this.durationRef} type="text" />
                 </div>
                 <div>
-                    <em>Description: </em>
-                    <input ref={this.descriptionRef} type="text" />
+                    <div>Description: </div>
+                    <textarea className="addDescriptionClass" ref={this.descriptionRef} type="text" />
                 </div>
                 <div>
-                    <em>Professional? </em>
+                    <div>Professional? </div>
                     <input ref={this.professionalRef} type="checkbox" />
                 </div>
                 <div>
-                    <em>Date: </em>
-                    <input ref={this.dateRef} type="text" />
+                    <div>Date: </div>
+                    <input className="addInputClass" ref={this.dateRef} type="text" />
                 </div>
                 <div>
                     <button className="addButton" onClick={this.onAddAdventure}>Add Adventure</button>
