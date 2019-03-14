@@ -59,12 +59,12 @@ export class AdventureForm extends React.Component {
                     <input className="addInputClass" ref={this.user_idRef} type="text" />
                 </div>
                 <div>
-                    <div>Adventure Type: </div>
-                    <input className="addInputClass" ref={this.adventure_typeRef} type="text" />
-                </div>
-                <div>
                     <div>Title: </div>
                     <input className="addInputClass" ref={this.titleRef} type="text" />
+                </div>
+                <div>
+                    <div>Adventure Type: </div>
+                    <input className="addInputClass" ref={this.adventure_typeRef} type="text" />
                 </div>
                 <div>
                     <div>Location: </div>

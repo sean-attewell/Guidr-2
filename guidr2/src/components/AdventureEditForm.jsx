@@ -50,17 +50,6 @@ export class AdventureEditForm extends React.Component {
                     <h2>Editing adventure {this.state.adventure_ID}...</h2>
                 </div>
                 <div>
-                    <em>Adventure Type: </em>
-                    <input 
-                        value={this.state.adventure_type} 
-                        type="text" 
-                        className="inputClass"
-                        onChange={this.handleInputChange}
-                        placeholder="Adventure Type"
-                        name="adventure_type"
-                    />
-                </div>
-                <div>
                     <em>Title: </em>
                     <input 
                         value={this.state.title} 
@@ -69,6 +58,17 @@ export class AdventureEditForm extends React.Component {
                         onChange={this.handleInputChange}
                         placeholder="Title"
                         name="title"
+                    />
+                </div>
+                <div>
+                    <em>Adventure Type: </em>
+                    <input 
+                        value={this.state.adventure_type} 
+                        type="text" 
+                        className="inputClass"
+                        onChange={this.handleInputChange}
+                        placeholder="Adventure Type"
+                        name="adventure_type"
                     />
                 </div>
                 <div>
