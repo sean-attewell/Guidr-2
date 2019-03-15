@@ -1,30 +1,32 @@
 import * as types from '../actions/actionTypes';
 
+
+
 export function adventuresReducer(adventuresArray = [], action) {
     switch (action.type) {
         case types.GET_ADVENTURES: // if action type is this
             return action.payload; // replace state with array of all objects
         case types.ADD_ADVENTURE:
-            // return adventuresArray.concat(action.payload); this works
-            return adventuresArray;
+            return adventuresArray; //server adds in background...
         case types.DELETE_ADVENTURE:
             return adventuresArray; // server deletes in background...
         case types.UPDATE_ADVENTURE:
-            return adventuresArray // server deletes in background...
+            return adventuresArray // server updates in background...
         default:
             return adventuresArray;
     }
 }
 
-// Q is whether need to get again to get updated server response.
-// when server deletes and updates in the background.
-// could manually filter out deleted here with logic to reflect the server,
-// but that seems silly.
-// if I need to, delete payload is the ID to filter with
-// and update payload is specifc updated adventure 
-
-// ooo maybe dispatch within the action creator to call get...
-// same way you did the spinner.
+export function adventureBeingEditedReducer(id = null, action) {
+    switch (action.type) {
+        case types.SET_ADVENTURE_FOR_EDIT:
+            return action.payload;
+        case types.CLEAR_ADVENTURE_FOR_EDIT:
+            return null;
+        default:
+            return id;
+    }
+}
 
 export function spinner(isOn = false, action) {
     switch (action.type) {

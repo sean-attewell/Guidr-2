@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './css/Index.css';
 import App from './components/App';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
-import { adventuresReducer, spinner } from './reducers/reducers';
+import { adventuresReducer, spinner, adventureBeingEditedReducer } from './reducers/reducers';
 
 const rootReducer = combineReducers({
     adventuresReducer,
-    spinner
+    spinner,
+    adventureBeingEditedReducer
 });
 
 

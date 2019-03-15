@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { addAdventureAsync } from '../actions/actionCreators';
-
+import '../css/AdventureForm.css'
 
 export class AdventureForm extends React.Component {
     user_idRef = React.createRef();
@@ -32,7 +32,7 @@ export class AdventureForm extends React.Component {
             location: locationInput.value,
             duration: durationInput.value,
             description: descriptionInput.value,
-            professional: professionalInput.value,
+            professional: professionalInput.checked,
             date: dateInput.value,
         };
 
@@ -44,50 +44,50 @@ export class AdventureForm extends React.Component {
         locationInput.value = '';
         durationInput.value = '';
         descriptionInput.value = '';
-        professionalInput.value = '';
+        // professionalInput.value = '';
         dateInput.value = '';
     }
 
     render() {
         return (
-            <div>
+            <div className="adventureFormContainer">
                 <div>
-                    <h2>Add new adventure!</h2>
+                    <h2 className="addHeader">Add new adventure!</h2>
                 </div>
                 <div>
-                    <em>User ID: </em>
-                    <input ref={this.user_idRef} type="text" />
+                    <div>User ID: </div>
+                    <input className="addInputClass" ref={this.user_idRef} type="text" />
                 </div>
                 <div>
-                    <em>Adventure Type: </em>
-                    <input ref={this.adventure_typeRef} type="text" />
+                    <div>Title: </div>
+                    <input className="addInputClass" ref={this.titleRef} type="text" />
                 </div>
                 <div>
-                    <em>Title: </em>
-                    <input ref={this.titleRef} type="text" />
+                    <div>Adventure Type: </div>
+                    <input className="addInputClass" ref={this.adventure_typeRef} type="text" />
                 </div>
                 <div>
-                    <em>Location: </em>
-                    <input ref={this.locationRef} type="text" />
+                    <div>Location: </div>
+                    <input className="addInputClass" ref={this.locationRef} type="text" />
                 </div>
                 <div>
-                    <em>Duration: </em>
-                    <input ref={this.durationRef} type="text" />
+                    <div>Duration: </div>
+                    <input className="addInputClass" ref={this.durationRef} type="text" />
                 </div>
                 <div>
-                    <em>Description: </em>
-                    <input ref={this.descriptionRef} type="text" />
+                    <div>Description: </div>
+                    <textarea className="addDescriptionClass" ref={this.descriptionRef} type="text" />
                 </div>
                 <div>
-                    <em>Professional? </em>
-                    <input ref={this.professionalRef} type="text" />
+                    <div>Professional? </div>
+                    <input ref={this.professionalRef} type="checkbox" />
                 </div>
                 <div>
-                    <em>Date: </em>
-                    <input ref={this.dateRef} type="text" />
+                    <div>Date: </div>
+                    <input className="addInputClass" ref={this.dateRef} type="text" />
                 </div>
                 <div>
-                    <button onClick={this.onAddAdventure}>Add Adventure</button>
+                    <button className="addButton" onClick={this.onAddAdventure}>Add Adventure</button>
                 </div>
             </div>
         );

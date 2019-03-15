@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import './App.css';
+import '../css/App.css';
 // import Spinner from './Spinner'
 import Adventures from './Adventures'
 import AdventureForm from './AdventureForm'
+import AdventureEditForm from './AdventureEditForm'
+
 
 
 class App extends Component {
@@ -16,10 +18,14 @@ class App extends Component {
     //   </div>
     //   )
     // }
+
     return (
-      <div className="listAndForm">
-        <Adventures />
-        <AdventureForm />
+      <div className="listAndForms">
+        <div style={this.props.adventureBeingEditedId ? {pointerEvents:"none", filter:"blur(3px)"} : {}}>
+            <Adventures />
+            <AdventureForm />
+        </div>
+        {this.props.adventureBeingEditedId && <AdventureEditForm />}
       </div>
     );
   }
@@ -27,12 +33,10 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    // adventures: state.adventuresReducer, don't think this is used here
-    spinner: state.spinner
+    spinner: state.spinner,
+    adventureBeingEditedId: state.adventureBeingEditedReducer
   };
 }
 
 export default connect(mapStateToProps)(App);
-
-
 
