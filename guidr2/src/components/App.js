@@ -11,13 +11,7 @@ import AdventureEditForm from './AdventureEditForm'
 class App extends Component {
 
   render() {
-    // if (this.props.spinner) {
-    //   return (
-    //     <div className="listAndForm">
-    //     <Spinner />
-    //   </div>
-    //   )
-    // }
+
 
     return (
       <div className="listAndForms">
@@ -40,3 +34,13 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps)(App);
 
+
+
+
+    // if (this.props.spinner) {
+    //   return (
+    //     <div className="listAndForm">
+    //     <Spinner />
+    //   </div>
+    //   )
+    // }
