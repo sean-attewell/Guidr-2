@@ -20,6 +20,7 @@ export default function Register(props) {
       .then(res => {
         // axios puts it in res.data
         setFlash(`${res.data.saved.username} has registered and logged in!`);
+        props.setLoggedInUser(res.data.id);
         localStorage.setItem('token', res.data.token);
         props.history.replace('/adventures');
       })
@@ -30,6 +31,7 @@ export default function Register(props) {
 
   return (
     <div className='register'>
+      <h2>Register</h2>
       <div className='register-inputs'>
         username <input ref={usernameRef} type="text" /> <br />
         role <input ref={roleRef} type="text" /> <br />

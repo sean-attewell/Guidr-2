@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { setLoggedInUser, clearLoggedInUser } from '../actions/actionCreators';
 import '../css/App.css';
 // import Spinner from './Spinner'
 import Adventures from './Adventures'
@@ -14,6 +16,7 @@ class App extends Component {
 
   onLogout = () => {
     localStorage.clear(); // takes away everything in localstorage
+    this.props.clearLoggedInUser();
     this.props.history.replace('/'); // props from react router (need to use HOC withRouter)
   };
 
@@ -36,12 +39,12 @@ class App extends Component {
           <Route
             path='/'
             exact
-            render={(props) => <Login {...props} />}
+            render={(props) => <Login {...props} setLoggedInUser={this.props.setLoggedInUser}/>}
           />
           <Route
             path='/register'
             exact
-            render={(props) => <Register {...props} />}
+            render={(props) => <Register {...props} setLoggedInUser={this.props.setLoggedInUser}/>}
           />
         </div>
 
@@ -72,6 +75,11 @@ function mapStateToProps(state) {
   };
 }
 
-export default withRouter(connect(mapStateToProps)(App));
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    setLoggedInUser,
+    clearLoggedInUser,
+  }, dispatch);
+}
 
-
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

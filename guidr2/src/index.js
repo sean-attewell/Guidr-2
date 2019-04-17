@@ -6,13 +6,14 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
-import { adventuresReducer, spinner, adventureBeingEditedReducer } from './reducers/reducers';
+import { adventuresReducer, spinner, adventureBeingEditedReducer, loggedInUserReducer } from './reducers/reducers';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 const rootReducer = combineReducers({
   adventuresReducer,
   spinner,
-  adventureBeingEditedReducer
+  adventureBeingEditedReducer,
+  loggedInUserReducer
 });
 
 

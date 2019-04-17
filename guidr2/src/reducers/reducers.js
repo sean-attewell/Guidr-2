@@ -28,6 +28,19 @@ export function adventureBeingEditedReducer(id = null, action) {
   }
 }
 
+export function loggedInUserReducer(id = null, action) {
+  switch (action.type) {
+    case types.SET_LOGGED_IN_USER:
+      return action.payload;
+    case types.CLEAR_LOGGED_IN_USER:
+      return null;
+    default:
+      return id;
+  }
+}
+
+
+
 export function spinner(isOn = false, action) {
   switch (action.type) {
     case types.SPINNER_ON:

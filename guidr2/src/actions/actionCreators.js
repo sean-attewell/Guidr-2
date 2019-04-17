@@ -69,7 +69,18 @@ export function clearAdventureForEdit() {
   }
 }
 
+export function setLoggedInUser(id) {
+  return {
+    type: types.SET_LOGGED_IN_USER,
+    payload: id
+  }
+}
 
+export function clearLoggedInUser() {
+  return {
+    type: types.CLEAR_LOGGED_IN_USER,
+  }
+}
 
 // The ol' workaround. Completely unnecessary:
 

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 
+
 // Hooks! Functional components can hold state.
 export default function Login(props) {
   const usernameRef = useRef();
@@ -18,6 +19,7 @@ export default function Login(props) {
       .then(res => {
         // axios puts it in res.data
         setFlash(`${res.data.message}`);
+        props.setLoggedInUser(res.data.id);
         localStorage.setItem('token', res.data.token);
         props.history.replace('/adventures');
       })
@@ -26,8 +28,10 @@ export default function Login(props) {
       })
   };
 
+
   return (
     <div className='login'>
+      <h2>Login</h2>
       <div className='login-inputs'>
         username <input ref={usernameRef} type="text" /> <br />
         password <input ref={passwordRef} type="text" />
@@ -44,3 +48,4 @@ export default function Login(props) {
   );
 }
 // if login fails/succeeds you'll get a flash message...
+
