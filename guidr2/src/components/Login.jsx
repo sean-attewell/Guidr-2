@@ -12,7 +12,8 @@ export default function Login(props) {
     // attempt login!
     // on success, set token to local storage, set a flash message
     // on failure, set a flash message with the error
-    axios.post('http://localhost:3500/api/auth/login', {
+    // 'http://localhost:3500/api/auth/login'
+    axios.post('https://guidr-2-backend.herokuapp.com/api/auth/login', {
       username: usernameRef.current.value,
       password: passwordRef.current.value,
     })

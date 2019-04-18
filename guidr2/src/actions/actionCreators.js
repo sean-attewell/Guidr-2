@@ -1,7 +1,8 @@
 import * as types from './actionTypes';
 import axios from 'axios';
 
-const adventureURL = 'http://localhost:3500/api/adventures'
+// const adventureURL = 'http://localhost:3500/api/adventures'
+const adventureURL = 'https://guidr-2-backend.herokuapp.com/api/adventures'
 
 // Asynchronous 
 export const getAdventuresAsync = () => dispatch => {
