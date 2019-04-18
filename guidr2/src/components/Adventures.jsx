@@ -3,50 +3,57 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getAdventuresAsync, deleteAdventureAsync, setAdventureForEdit } from '../actions/actionCreators'
 import Adventure from './Adventure';
+import { withRouter } from 'react-router-dom';
+
 import '../css/Adventures.css'
 
 export class Adventures extends React.Component {
-    componentDidMount() {
-        this.props.getAdventuresAsync();
+  componentDidMount() {
+    if (!localStorage.getItem('token')) {
+      this.props.history.push('/');
+    } else {
+      this.props.getAdventuresAsync();
     }
+  }
 
-    render() {
-        return (
-            <div>
-                <img className="guidr-logo" src={require('../images/guidr-no-back.png')} alt="guidr-logo"></img>
-                <h1>Local adventure listings...</h1>
-                <div className="adventuresContainer">
-                    {
-                        this.props.adventures.map(adventure => (
-                            <div key={adventure.id}>
-                                <Adventure
-                                    key={adventure.id}
-                                    adventure={adventure}
-                                    deleteAdventureAsync={this.props.deleteAdventureAsync}
-                                    setAdventureForEdit={this.props.setAdventureForEdit}
-                                />
-                            </div>
-                        ))
-                    }
-                </div>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <img className="guidr-logo" src={require('../images/guidr-no-back.png')} alt="guidr-logo"></img>
+        <h1>Local adventure listings...</h1>
+        
+        <div className="adventuresContainer">
+          {
+            this.props.adventures.map(adventure => (
+              <div key={adventure.id}>
+                <Adventure
+                  key={adventure.id}
+                  adventure={adventure}
+                  deleteAdventureAsync={this.props.deleteAdventureAsync}
+                  setAdventureForEdit={this.props.setAdventureForEdit}
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    );
+  }
 }
 
 
 function mapStateToProps(state) {
-    return {
-        adventures: state.adventuresReducer,
-    };
+  return {
+    adventures: state.adventuresReducer,
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-        getAdventuresAsync,
-        deleteAdventureAsync,
-        setAdventureForEdit,
-    }, dispatch);
+  return bindActionCreators({
+    getAdventuresAsync,
+    deleteAdventureAsync,
+    setAdventureForEdit,
+  }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Adventures);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Adventures));
